@@ -4,6 +4,11 @@ require 'sass2stylus'
 
 converter = Sass2stylus::Utilities.new
 
+if ARGV.length < 2
+  puts "Both arguments are required"
+  puts "Example: sass2stylus **/*.scss /styl"
+end
+
 glob = Dir.glob(ARGV[0])
 styl = ARGV[1]
 
