@@ -2,7 +2,7 @@
 
 require 'sass2stylus'
 
-converter = Sass2Stylus::Utilities.new
+converter = Sass2stylus::Utilities.new
 
 glob = Dir.glob(ARGV[0])
 styl = ARGV[1]
