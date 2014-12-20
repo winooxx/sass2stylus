@@ -2,22 +2,11 @@
 
 require 'sass2stylus'
 
-converter = Sass2stylus::Utilities.new
-
 if ARGV.length < 2
-  puts "Both arguments are required"
-  puts "Example: sass2stylus **/*.scss /styl"
+  puts "You must pass a glob and a output folder."
+  puts "Example: sass2stylus **/*.scss styl"
+  exit
 end
 
-glob = Dir.glob(ARGV[0])
-styl = ARGV[1]
-
-# Convert every file matching the glob
-if glob.empty?
-  puts "The pattern '#{ARGV[0]}' didn't match any sass files."
-  puts "Use globs like: sass2stylus **/*.scss"
-else
-  Dir.glob(glob).each do |file|
-    converter.s2s(file, styl)
-  end;
-end
+util = Sass2stylus::Utilities.new
+util.batch(Pathname.pwd, ARGV[0], ARGV[1])
