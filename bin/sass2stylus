@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'sass2stylus'
+
+converter = Sass2Stylus::Utilities.new
+
+glob = Dir.glob(ARGV[0])
+styl = ARGV[1]
+
+# Convert every file matching the glob
+if glob.empty?
+  puts "The pattern '#{ARGV[0]}' didn't match any sass files."
+  puts "Use globs like: sass2stylus **/*.scss"
+else
+  Dir.glob(glob).each do |file|
+    converter.s2s(file, styl)
+  end;
+end
