@@ -14,15 +14,14 @@ module Sass2stylus
       File.open(full_path, 'w+') { |f|
         f.puts(ToStylus::convert(sass_path))
       }
+
     end
 
     # Accepts a sass file and returns a stylus file
     def s2s(directory, filename, styl_dir)
 
-      Dir.mkdir(styl_dir) unless File.exists?(styl_dir)
-
-      raw_filename = filename.gsub(directory.to_s, '').gsub('.scss', '')
-      sass_file = filename.gsub '.scss', '.sass'
+      raw_filename = filename.gsub(directory.to_s, '').gsub('.scss', '').gsub('.sass', '')
+      sass_file = filename.gsub('.scss', '.sass')
 
       if filename.include? ".scss"
         `sass-convert #{filename} #{sass_file}`
@@ -31,7 +30,7 @@ module Sass2stylus
       elsif filename.include? ".sass"
         write_file(raw_filename, sass_file, styl_dir)
       else
-        puts "You passed some files that aren't .sass or .scss files."
+        puts "#{filname} is not a sass file"
         puts "You can specify that in your glob: sass2stylus *.scss"
       end
 
