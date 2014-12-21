@@ -6,7 +6,7 @@ Convert any number of sass files to stylus files in a ruby script or on the comm
 
 To use Sass2Stylus as a command line utility, install the gem:
 
-```
+```bash
 $ gem install sass2stylus
 ```
 
@@ -18,13 +18,13 @@ gem 'sass2stylus'
 
 And then install with your other dependencies:
 
-```
+```bash
 $ bundle install
 ```
 
 ## Usage
 
-```
+```bash
 $ sass2stylus sass/folder/**/*.scss stylus/folder
 ```
 
@@ -32,11 +32,11 @@ First argument is a glob-formatted pattern which explains where the sass files a
 
 The second argument is a folder where you'd like to dump the generated stylus files. **Note** The folder structure of the sass folder will be preserved in the stylus folder.
 
-## Ruby Class API
+## Usage in Ruby Project
 
-To use this gem in a ruby project, just import it and set up a new instance of the `Utitlities` class and pass a blob of sass files into stylus by calling:
+To use this gem in a ruby project, just import it and set up a new instance of the `Sass2stylus::Utitlities` class and pass a blob of sass files into stylus by calling:
 
-```
+```ruby
 require 'sass2stylus'
 util = Sass2stylus::Utilities.new
 util.batch(Pathname.pwd, '**/*.scss', 'stylus')
