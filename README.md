@@ -34,12 +34,12 @@ The second argument is a folder where you'd like to dump the generated stylus fi
 
 ## Usage in Ruby Project
 
-To use this gem in a ruby project, just import it and set up a new instance of the `Sass2stylus::Utitlities` class and pass a blob of sass files into stylus by calling:
+To use this gem in a ruby project, just import it and set up a new instance of the `Sass2stylus::Utilities` class and pass a blob of sass files into stylus by calling:
 
 ```ruby
 require 'sass2stylus'
-util = Sass2stylus::Utilities.new
-util.batch(Pathname.pwd, '**/*.scss', 'stylus')
+s2s = Sass2stylus::Utilities.new
+s2s.batch(Pathname.pwd, '**/*.scss', 'stylus')
 ```
 
 Pass in the base directory, the path to the sass files, and the relative path to the folder you'd like to use for output. (If you supply a folder that doesn't exist, the script will make it for you.)
