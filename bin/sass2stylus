@@ -9,4 +9,8 @@ if ARGV.length < 2
 end
 
 util = Sass2stylus::Utilities.new
-util.batch(Pathname.pwd, ARGV[0], ARGV[1])
+
+*files, dest = ARGV
+files.each do |file|
+   util.batch(Pathname.pwd, file, dest)
+end
